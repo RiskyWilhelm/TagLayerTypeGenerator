@@ -16,7 +16,7 @@ namespace AlkimeeGames.TagLayerTypeGenerator.Editor.Settings
         /// <returns>If all parts of the <paramref name="namespace" /> are valid.</returns>
         private static bool IsValidNamespace(string @namespace)
         {
-            if (!string.IsNullOrWhiteSpace(@namespace) && @namespace.Split('.').All(CodeGenerator.IsValidLanguageIndependentIdentifier)) return true;
+            if (string.IsNullOrEmpty(@namespace) || @namespace.Split('.').All(CodeGenerator.IsValidLanguageIndependentIdentifier)) return true;
             Debug.LogErrorFormat(InvalidIdentifier, @namespace);
             return false;
         }
